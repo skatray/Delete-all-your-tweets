@@ -1,28 +1,34 @@
-setInterval(Delete,8000);
-document.querySelectorAll( 'ul[aria-labelledby="menu-0"]' )[0].appendChild(newLi);
-
-function Delete(){
-document.getElementsByClassName("ProfileTweet-actionButton")[0].click();	
-setTimeout(ClickUdalyt, 500);
+let countdel=0;
+let vniz=200;
+function main(){
+	if(document.querySelector("section[aria-labelledby=accessible-list-1] > div >div").childElementCount!=0){
+		setTimeout(deletee,8000);
+	}else{
+		console.log("END");	
+	}
 }
 
-
+function deletee(){
+	document.querySelector("div[data-testid=caret]").click();
+	setTimeout(ClickUdalyt, 500);
+}
 function ClickUdalyt(){
-document.getElementsByClassName("js-actionDelete")[0].children[0].click();	
-setTimeout(Podtverdit, 500);
+	document.querySelector("div[role=menu] div[role=menuitem]").click();	
+	setTimeout(podtverdit, 500);
 }
-
-function Podtverdit(){
-document.getElementsByClassName("delete-action")[0].click();
-inform();
-Vniz();
+function podtverdit(){
+	document.querySelectorAll("div[role=button]")[1].click();
+	countdel++
+	inform();
+	vniz();
+	main();
 }
-function Vniz(){
-window.scrollTo(0, vniz);
-//vniz=vniz+200;	
+function vniz(){
+	window.scrollTo(0, vniz);
+vniz=vniz+200;	
 }
 
 function inform(){
-	console.log("действие выполнено над "+countdel+"постами")
+	console.log("действие выполнено над "+countdel+" постами")
 }
-
+main();
